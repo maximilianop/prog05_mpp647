@@ -16,6 +16,7 @@ using namespace std;
         artist = a;
         title = t;
         size = s;
+
     }
 
     bool Song::operator ==(Song const &rhs){
@@ -49,3 +50,5 @@ using namespace std;
         } else if (artist.compare(rhs.artist) > 0) return true;
         else return false;
     }
+
+    Song::~Song() = default;
