@@ -4,7 +4,9 @@
 CMakeFiles/Project_5_1.dir/Song.cpp.o: ../Song.cpp
 CMakeFiles/Project_5_1.dir/Song.cpp.o: ../Song.h
 
+CMakeFiles/Project_5_1.dir/UtPod.cpp.o: ../Song.h
 CMakeFiles/Project_5_1.dir/UtPod.cpp.o: ../UtPod.cpp
+CMakeFiles/Project_5_1.dir/UtPod.cpp.o: ../UtPod.h
 
 CMakeFiles/Project_5_1.dir/UtPodDriver.cpp.o: ../Song.h
 CMakeFiles/Project_5_1.dir/UtPodDriver.cpp.o: ../UtPod.h

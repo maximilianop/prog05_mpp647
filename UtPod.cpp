@@ -18,6 +18,8 @@ using namespace std;
 
     int UtPod::addSong(Song const &s){
         if (getRemainingMemory() == podMemSize){
+            SongNode *first = new SongNode;
+            songs = first;
             songs->s = s;
             songs->next = nullptr;
             return SUCCESS;
@@ -43,7 +45,7 @@ using namespace std;
                 temp = temp->next;
             }
             temp2 = temp->next;
-            temp->next = temp->next->next;
+            temp->next = temp2->next;
             delete temp2;
         }
     }
@@ -83,5 +85,23 @@ using namespace std;
     }
 
     int UtPod::getRemainingMemory(){
-        
+        SongNode *temp = songs;
+        int usedMemory = 0;
+        while(temp != nullptr){
+            usedMemory = usedMemory + temp->s.getSize();
+            temp = temp->next;
+        }
+        return (podMemSize-usedMemory);
+    }
+
+    void UtPod::clearMemory(){
+        while (songs != nullptr){
+            SongNode *temp = songs;
+            songs = songs->next;
+            delete temp;
+        }
+    }
+
+        UtPod::~UtPod(){
+        clearMemory();
     }
