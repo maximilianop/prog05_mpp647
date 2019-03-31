@@ -20,28 +20,68 @@ using namespace std;
         if (getRemainingMemory() == podMemSize){
             songs->s = s;
             songs->next = nullptr;
+            return SUCCESS;
         } else if (s.getSize() <= getRemainingMemory()){
-                if (songs->s.operator>(s)){
-                    SongNode *add = new SongNode;
-                    add->s = s;
-                    add->next = songs;
-                    songs = add;
-                } else {
-                    SongNode *temp = songs;
-                    while (temp->next->s.operator<(s)) {
-                        temp = temp->next;
-                    }
-                    SongNode *add = new SongNode;
-                    add->s = s;
-                    add->next = temp->next;
-                    temp->next = add;
-                }
+                SongNode *newSong = new SongNode;
+                newSong->next = songs;
+                newSong->s = s;
+                songs = newSong;
         } else return NO_MEMORY;
     }
 
     int UtPod::removeSong(Song const &s){
+        if (getRemainingMemory() == podMemSize) return NOT_FOUND;
         if (songs->s.operator==(s)){
             SongNode *temp = songs;
             songs = songs->next;
+            delete temp;
+        } else {
+            SongNode *temp = songs;
+            SongNode *temp2;
+            while (!(temp->next->s == s)){
+                if (temp->next == nullptr) return NOT_FOUND;
+                temp = temp->next;
+            }
+            temp2 = temp->next;
+            temp->next = temp->next->next;
+            delete temp2;
         }
+    }
+
+    void shuffle(){
+
+    }
+
+    void UtPod::showSongList(){
+        if (getRemainingMemory() == podMemSize){
+            cout << "No songs in UtPod" << endl;
+            return;
+        }
+        SongNode *temp = songs;
+        while (temp != nullptr){
+            cout << temp->s.getTitle()<< " " << temp->s.getArtist() << " " << temp->s.getSize() << " MB" << endl;
+            temp = temp->next;
+        }
+    }
+
+    void UtPod::sortSongList() {
+        SongNode *temp = songs;
+        while (temp != nullptr){
+            SongNode *min = temp;
+            SongNode *temp2 = temp;
+            while (temp2 != nullptr){
+                if (temp2->s.operator<(min->s)) {
+                    min = temp2->next;
+                }
+                temp2 = temp2->next;
+            }
+            Song tempSong = min->s;
+            min->s = temp->s;
+            temp->s = tempSong;
+            temp = temp->next;
+        }
+    }
+
+    int UtPod::getRemainingMemory(){
+        
     }
