@@ -24,10 +24,14 @@ using namespace std;
             songs->next = nullptr;
             return SUCCESS;
         } else if (s.getSize() <= getRemainingMemory()){
+                SongNode *temp = songs;
+                while (temp->next != nullptr) {
+                    temp=temp->next;
+                }
                 SongNode *newSong = new SongNode;
-                newSong->next = songs;
+                temp->next = newSong;
                 newSong->s = s;
-                songs = newSong;
+                newSong->next = nullptr;
         } else return NO_MEMORY;
     }
 
@@ -61,9 +65,10 @@ using namespace std;
         }
         SongNode *temp = songs;
         while (temp != nullptr){
-            cout << temp->s.getTitle()<< " " << temp->s.getArtist() << " " << temp->s.getSize() << " MB" << endl;
+            cout << temp->s.getTitle()<< ", " << temp->s.getArtist() << ", " << temp->s.getSize() << "MB" << endl;
             temp = temp->next;
         }
+        cout<<endl;
     }
 
     void UtPod::sortSongList() {
@@ -73,7 +78,7 @@ using namespace std;
             SongNode *temp2 = temp;
             while (temp2 != nullptr){
                 if (temp2->s.operator<(min->s)) {
-                    min = temp2->next;
+                    min = temp2;
                 }
                 temp2 = temp2->next;
             }
