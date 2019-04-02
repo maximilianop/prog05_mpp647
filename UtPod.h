@@ -3,6 +3,7 @@
 #ifndef UTPOD_H
 #define UTPOD_H
 #include "Song.h"
+#include <time.h>
 
 //UtPod class declaration
 class UtPod
@@ -22,7 +23,10 @@ class UtPod
       SongNode *songs;  //the head pointer
       
       int podMemSize;  //the total amount of memory available on the UtPod
-   
+
+      void swap(Song &s1, Song &s2);
+      int findNumSongs(SongNode  *&s);
+
    public:
       //Default constructor
       //set the memory size to MAX_MEMORY

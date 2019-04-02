@@ -9,14 +9,13 @@ using namespace std;
     Song::Song() {
         artist = "";
         title = "";
-        size = MAX_SIZE;
+        size = 0;
     }
 
     Song::Song(string a, string t, int s){
         artist = a;
         title = t;
         size = s;
-
     }
 
     bool Song::operator ==(Song const &rhs){
