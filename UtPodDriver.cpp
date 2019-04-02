@@ -39,7 +39,7 @@ int main ( ){
     //tests code with a default constructor.
     //adds multiple songs until pod is full, then lists the pod.
     //sort is tested, shuffle is tested thrice to demonstrate randomness
-
+    cout << "Test 1" << endl;
     UtPod firstPod;
     result = firstPod.addSong(song1);
     result = firstPod.addSong(song2);
@@ -123,5 +123,19 @@ int main ( ){
     result = firstPod.removeSong(song24);
     result = firstPod.removeSong(song26);
     result = firstPod.removeSong(song25);
-    return 0;
+
+
+    cout << "Test 2" << endl;
+    UtPod second(100);
+    second.addSong(song1);
+    second.addSong(song3);
+    second.addSong(song5);
+    second.addSong(song7);
+    second.addSong(song10);
+    //pod full
+    second.addSong(song11);
+    second.sortSongList();
+    second.showSongList();
+    second.shuffle();
+    second.showSongList();
 }

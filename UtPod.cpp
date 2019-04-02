@@ -29,6 +29,7 @@ using namespace std;
 
         SongNode *first = new SongNode;
         songs = first;
+        songs->next = nullptr;
     }
 
     UtPod::UtPod(int size){
@@ -39,6 +40,7 @@ using namespace std;
         srand(time(NULL));
         SongNode *first = new SongNode;
         songs = first;
+        songs->next = nullptr;
     }
 
     int UtPod::addSong(Song const &s){

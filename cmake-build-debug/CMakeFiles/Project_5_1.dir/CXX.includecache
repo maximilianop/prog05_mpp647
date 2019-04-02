@@ -6,10 +6,6 @@
 
 #IncludeRegexTransform: 
 
-/home/paxm/Documents/EE312/Project_5_1/Song.cpp
-Song.h
-/home/paxm/Documents/EE312/Project_5_1/Song.h
-
 /home/paxm/Documents/EE312/Project_5_1/Song.h
 string
 -
@@ -17,10 +13,6 @@ iostream
 -
 fstream
 -
-
-/home/paxm/Documents/EE312/Project_5_1/UtPod.cpp
-UtPod.h
-/home/paxm/Documents/EE312/Project_5_1/UtPod.h
 
 /home/paxm/Documents/EE312/Project_5_1/UtPod.h
 Song.h
